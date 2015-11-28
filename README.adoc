@@ -1,0 +1,111 @@
+= Planck LightTable plugin
+Light Table plugin for Planck
+v0.1.0, 2015-11-28: published
+:library: Asciidoctor
+:numbered:
+:idprefix:
+:toc: macro
+
+
+http://planck.fikesfarm.com/[Planck] plugin for Light Table
+
+
+== Installation
+Install using the Light Table plugin manager.
+Alternatively you can clone it into `$LT_USER_HOME\plugins`.
+
+
+== Raison d'etre
+* The main rationale is that if you find planck useful, you might also find it useful to have some editor
+support when doing something a bit more involved with planck.
+* It's the fastest way to get started evaling ClojureScript for Light Table users using OS/X
+* Super fast eval
+
+
+
+== Preconditions
+* OS/X only
+* **LIghtTable 0.8-alpha or higher is required**
+* You will need to install http://planck.fikesfarm.com/[Planck]. If you are not using homebrew, you have to make sure planck is available in your path
+
+
+
+== Simple eval
+* Open a new editor (cmd + n)
+* ctrl+apace -> `Editor: Set current editor syntax` -> ClojureScript
+* Select an expression or position cursor inside a top-level form
+* ctrl-space -> `Planck: Eval selected cljs using planck`
+* Results are displayed inline (no distinction between errors and ok results as of yet)
+
+
+NOTE: The first time you eval like this a planck instance is started, subsequent evals uses the running instance
+
+
+[TIP]
+====
+Since Light Table already have a default binding for clojurescript eval, you need to add a shortcut of your choice
+
+
+[source,clojure]
+----
+  [:editor.cljs "ctrl-cmd-p" :planck.eval-one]; modify keybinding to your liking !
+----
+
+
+====
+
+
+== Planck projects
+If you wish to do something a bit more involved with Planck, you may define a planck project.
+Think lein project, but a lot simpler.
+In the root folder of your planck projeect define a `planck-project.clj`
+
+[source,clojure]
+----
+{:name "Hello Planck"
+ :src ["src" "src-extra"]
+ :dependencies ["lib/test-jar.jar"]}
+----
+
+WARNING: The concept of a planck project is not an official planck thing. It might be in the future though :)
+
+=== Connect manually
+* `ctrl+space` -> `Connect: Add Connection`
+* Select Planck from the list of connection options
+* Select the directory for your project
+* Whatever you added to src and dependencies in `planck-project.clj` will be added to the classpath for your planck session when connecting.
+
+=== Connect automagically
+If you invoke `Planck: Eval selected cljs using planck` from any cljs file below the directory containing `planck-project.clj`
+the plugin with automatically connect (start a planck repl in the background) or reuse an existing connection for the project if one already exists.
+
+
+=== Disconnecting
+If you want to start fresh (or if you updated your `planck-project.clj`:
+
+* `ctrl+space` -> `Connect: Show connect bar`
+* Click disconnect button for your project
+
+
+=== Evaling
+To eval you need to do that via a cljs file that resides somewhere in your project directory.
+
+
+
+== Contributing
+Pull requests are most welcome. Please do not include the transpiled files (*_compiled*) in the PR.
+
+== History
+* 0.1.0 Initial release
+
+== License
+MIT, same as Light Table. See LICENSE.md for details.
+
+
+
+
+
+
+
+
+

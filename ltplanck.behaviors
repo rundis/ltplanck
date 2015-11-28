@@ -1,0 +1,12 @@
+[[:app :lt.objs.plugins/load-js ["ltplanck_compiled.js"]]
+
+  [:planck.plugin :lt.plugins.ltplanck.core/connect]
+  [:planck.plugin :lt.plugins.ltplanck.core/eval!]
+
+  [:editor.cljs :lt.plugins.ltplanck.core/on-eval.one]
+  [:editor.cljs :lt.plugins.ltplanck.core/eval-result]
+  [:editor.cljs :lt.plugins.ltplanck.core/eval-err]
+
+
+
+ ]
